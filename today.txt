@@ -1,3 +1,0 @@
-google.com,200
-ya.ru,200
-mail.ru,200
