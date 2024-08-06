@@ -10,7 +10,7 @@
 ## Использование
 Запустите JAR, лежащий в папке build в репозитории, например:
 ```
-java [-DlogLevel=] -jar MonitoringSystem.jar -t1 yesterday.txt -t2 today.txt -m message.txt
+java -jar MonitoringSystem.jar -t1 yesterday.txt -t2 today.txt -m message.txt
 ```
 Формат файла таблицы должен выглядить так:
 ```
@@ -19,4 +19,14 @@ URL,код
 Например:
 ```
 ya.ru,200
+```
+## Логгирование
+Приложение может выводить логи о своей работе вместе с результатом исполнения программы. Для этого необходимо указать в параметрах VM аргумент:
+```
+-DlogLevel=DEBUG
+```
+Или любой другой уровень Log4J
+Пример полной комманды:
+```
+java -DlogLevel=DEBUG -jar MonitoringSystem.jar -t1 yesterday.txt -t2 today.txt -m message.txt
 ```
