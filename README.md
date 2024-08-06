@@ -26,6 +26,7 @@ ya.ru,200
 -DlogLevel=DEBUG
 ```
 Или любой другой уровень Log4J
+
 Пример полной комманды:
 ```
 java -DlogLevel=DEBUG -jar MonitoringSystem.jar -t1 yesterday.txt -t2 today.txt -m message.txt
