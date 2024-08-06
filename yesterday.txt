@@ -1,0 +1,3 @@
+google.com,200
+ya.ru,500
+example.com,200
