@@ -38,6 +38,13 @@ public class Main {
                     ...
                     url,code
                 """);
+        System.out.println("""
+                Message must contain these placeholder lines:
+                    $name(name of a person to insert)
+                    $disappeared(list of disappeared URLs)
+                    $new(new URLs)
+                    $changed(changed URLs)
+                """);
     }
 
     public static void main(String[] args) {
