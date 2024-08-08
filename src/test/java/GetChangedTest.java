@@ -8,14 +8,18 @@ public class GetChangedTest extends TestCase {
         IURLRepository yesterday = new URLRepository("src/test/resources/yesterday.txt");
         IURLRepository today = new URLRepository("src/test/resources/today.txt");
         GetChangedUsecase usecase = new GetChangedUsecase(yesterday, today);
-        String expected = "ya.ru";
+        String expected = "\n- ya.ru";
         assertEquals(expected, usecase.getChanged());
     }
     public void testAllChanges() {
         IURLRepository yesterday = new URLRepository("src/test/resources/yesterday.txt");
         IURLRepository today = new URLRepository("src/test/resources/changed_table.txt");
         GetChangedUsecase usecase = new GetChangedUsecase(yesterday, today);
-        String expected = "google.com, ya.ru, example.com";
+        String expected = """
+                
+                - google.com
+                - ya.ru
+                - example.com""";
         assertEquals(expected, usecase.getChanged());
     }
     public void testNoneChanges() {

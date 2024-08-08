@@ -8,14 +8,18 @@ public class GetDisappearedTest extends TestCase {
         IURLRepository yesterday = new URLRepository("src/test/resources/yesterday.txt");
         IURLRepository today = new URLRepository("src/test/resources/today.txt");
         GetDisappearedUsecase usecase = new GetDisappearedUsecase(yesterday, today);
-        String expected = "example.com";
+        String expected = "\n- example.com";
         assertEquals(expected, usecase.getDisappeared());
     }
     public void testAllDisappeared() {
         IURLRepository yesterday = new URLRepository("src/test/resources/yesterday.txt");
         IURLRepository today = new URLRepository("src/test/resources/disappeared_table.txt");
         GetDisappearedUsecase usecase = new GetDisappearedUsecase(yesterday, today);
-        String expected = "google.com, ya.ru, example.com";
+        String expected = """
+                             
+                             - google.com
+                             - ya.ru
+                             - example.com""";
         assertEquals(expected, usecase.getDisappeared());
     }
     public void testNoneDisappeared() {

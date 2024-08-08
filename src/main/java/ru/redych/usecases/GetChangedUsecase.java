@@ -42,17 +42,18 @@ public class GetChangedUsecase {
     public String getChanged() {
         log.debug("GetChangedUsecase started");
         StringBuilder builder = new StringBuilder();
+        builder.append("\n");
         for(String key: today.getSet()){
             if(null != yesterday.getCode(key)) {
                 if(!Objects.equals(yesterday.getCode(key), today.getCode(key))){
-                    builder.append(key).append(", ");
+                    builder.append("- ").append(key).append("\n");
                 }
             }
         }
-        // We don't need the last comma
-        int latsComma = builder.lastIndexOf(", ");
-        if(latsComma != -1) {
-            builder.delete(latsComma, latsComma + 2);
+        // We don't need the last new line symbol
+        int lastNewLine = builder.lastIndexOf("\n");
+        if(lastNewLine != -1) {
+            builder.delete(lastNewLine, lastNewLine + 2);
         }
         log.debug("GetChangedUsecase finished");
         return builder.toString();

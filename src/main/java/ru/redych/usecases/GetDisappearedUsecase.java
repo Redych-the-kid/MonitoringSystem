@@ -34,15 +34,16 @@ public class GetDisappearedUsecase {
     public String getDisappeared(){
         log.debug("GetDisappearedUsecase started");
         StringBuilder builder = new StringBuilder();
+        builder.append("\n");
         for(String key: yesterday.getSet()){
             if(today.getCode(key) == null) {
-                builder.append(key).append(", ");
+                builder.append("- ").append(key).append("\n");
             }
         }
-        // We don't need the last comma
-        int latsComma = builder.lastIndexOf(", ");
-        if(latsComma != -1) {
-            builder.delete(latsComma, latsComma + 2);
+        // We don't need the last new line symbol
+        int lastNewLine = builder.lastIndexOf("\n");
+        if(lastNewLine != -1) {
+            builder.delete(lastNewLine, lastNewLine + 2);
         }
         log.debug("GetDisappearedUsecase started");
         return builder.toString();

@@ -8,14 +8,18 @@ public class GetNewTest extends TestCase {
         IURLRepository yesterday = new URLRepository("src/test/resources/yesterday.txt");
         IURLRepository today = new URLRepository("src/test/resources/today.txt");
         GetNewUsecase usecase = new GetNewUsecase(yesterday, today);
-        String expected = "mail.ru";
+        String expected = "\n- mail.ru";
         assertEquals(expected, usecase.getNew());
     }
     public void testAllNew() {
         IURLRepository yesterday = new URLRepository("src/test/resources/yesterday.txt");
         IURLRepository today = new URLRepository("src/test/resources/new_table.txt");
         GetNewUsecase usecase = new GetNewUsecase(yesterday, today);
-        String expected = "yandex.ru, gorillaz.com, mail.ru";
+        String expected = """
+                             
+                             - yandex.ru
+                             - gorillaz.com
+                             - mail.ru""";
         assertEquals(expected, usecase.getNew());
     }
     public void testNoneNew() {
