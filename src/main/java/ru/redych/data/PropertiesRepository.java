@@ -2,8 +2,6 @@ package ru.redych.data;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.Configurator;
 import ru.redych.data.interfaces.IPropertiesRepository;
 
@@ -11,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Properties;
 
 /**
@@ -23,10 +20,9 @@ public class PropertiesRepository implements IPropertiesRepository {
     static {
         // Logger setup
         String logLevel = System.getProperty("logLevel", "ERROR"); // Default to OFF
-        LoggerContext context = (LoggerContext) LogManager.getContext(false);
-        Configuration config = context.getConfiguration();
         Configurator.setRootLevel(org.apache.logging.log4j.Level.toLevel(logLevel));
     }
+
     private final Properties properties = new Properties();
 
     /**
@@ -43,6 +39,7 @@ public class PropertiesRepository implements IPropertiesRepository {
             log.error("Error while reading the properties file! It may not exist or be corrupted!");
         }
     }
+
     @Override
     public String getPropertyByName(String name) {
         return properties.getProperty(name);

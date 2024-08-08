@@ -6,6 +6,7 @@ package ru.redych.data.interfaces;
 public interface IPropertiesRepository {
     /**
      * Gets property from properties repository
+     *
      * @param name Name of the property to get
      * @return Property string
      */

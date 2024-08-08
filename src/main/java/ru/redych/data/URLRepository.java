@@ -2,13 +2,12 @@ package ru.redych.data;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.config.Configuration;
 import org.apache.logging.log4j.core.config.Configurator;
 import ru.redych.data.interfaces.IURLRepository;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -16,19 +15,19 @@ import java.util.Set;
  * URLRepository implementation
  */
 public class URLRepository implements IURLRepository {
-    private static final Logger log = LogManager.getLogger(PropertiesRepository.class.getName());
+    private static final Logger log = LogManager.getLogger(URLRepository.class.getName());
 
     static {
         // Logger setup
         String logLevel = System.getProperty("logLevel", "ERROR"); // Default to OFF
-        LoggerContext context = (LoggerContext) LogManager.getContext(false);
-        Configuration config = context.getConfiguration();
         Configurator.setRootLevel(org.apache.logging.log4j.Level.toLevel(logLevel));
     }
+
     private final HashMap<String, Integer> hashMap;
 
     /**
      * Constructor for URLRepository
+     *
      * @param fileName File path to URL table file. Can be either relative or absolute.
      */
     public URLRepository(String fileName) {

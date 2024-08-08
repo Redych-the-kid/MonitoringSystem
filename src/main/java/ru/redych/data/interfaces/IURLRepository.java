@@ -8,6 +8,7 @@ import java.util.Set;
 public interface IURLRepository {
     /**
      * Gets status code by URL
+     *
      * @param url Target URL
      * @return HTTP status code for given URL
      */
@@ -15,6 +16,7 @@ public interface IURLRepository {
 
     /**
      * Gets Set of String type of URL's
+     *
      * @return Set of String type of URL's
      */
     Set<String> getSet();
